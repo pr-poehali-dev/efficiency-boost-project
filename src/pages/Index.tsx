@@ -340,27 +340,31 @@ export default function Index() {
               <div style={{ background: "#fff", borderRadius: 16, padding: 28, marginBottom: 20, boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
                 <div style={{ fontSize: 13, fontWeight: 700, color: "#8bc34a", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 18 }}>Методика расчёта экономического эффекта</div>
 
+                <div style={{ background: "#fff8e1", border: "1px solid #ffe082", borderRadius: 10, padding: "12px 18px", marginBottom: 4, fontSize: 13, color: "#7a5c00", lineHeight: 1.7 }}>
+                  <strong>Исходные условия:</strong> предприятие работает на «1С:Предприятие» без внедрённой ERP-системы. Учёт — преимущественно ручной: Excel, журналы, неструктурированные базы 1С. Основные потери — дублирование ввода данных, отсутствие сквозной аналитики, ручная сверка и согласование документов.
+                </div>
+
                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                   <FormulaBlock
                     step="01"
-                    title="Экономия на ФОТ (высвобождение рабочего времени)"
-                    formula="Э_фот = (Т_потери × Ч_сотр × С_час) × 12"
-                    desc="Т_потери — среднее время потерь на 1 сотрудника в месяц (ч)  ·  Ч_сотр — кол-во сотрудников  ·  С_час — средняя стоимость часа работы (₽)"
-                    example="Расчёт: 20 ч × 976 чел. × 1 775 ₽ × 12 мес. ≈ 415 800 000 ₽/год"
+                    title="Экономия ФОТ — устранение ручного дублирования данных из 1С"
+                    formula="Э_фот = (Т_дубл × Ч_сотр × С_час) × 12"
+                    desc="Т_дубл — время на ручной перенос, сверку и согласование документов в 1С в месяц (ч)  ·  Ч_сотр — число вовлечённых сотрудников  ·  С_час — стоимость часа (₽)"
+                    example="Расчёт: 30 ч × 976 чел. × 1 775 ₽ × 12 мес. ≈ 623 664 000 ₽/год"
                   />
                   <FormulaBlock
                     step="02"
-                    title="Снижение затрат на исправление ошибок (брак, доработки)"
+                    title="Снижение потерь от ошибок ручного учёта и пересортицы"
                     formula="Э_ош = (N_ош × С_ош) × К_снижения"
-                    desc="N_ош — кол-во ошибок в месяц  ·  С_ош — средняя стоимость устранения одной ошибки (₽)  ·  К_снижения — коэффициент снижения ошибок (0.6 = –60%)"
-                    example="Расчёт: 200 ош. × 50 000 ₽ × 0.6 × 12 = 720 000 000 ₽/год"
+                    desc="N_ош — ошибки в месяц из-за ручного ввода в 1С (пересортица, недостачи, ошибки в документах)  ·  С_ош — стоимость устранения  ·  К_снижения = 0.7 (–70%)"
+                    example="Расчёт: 150 ош. × 40 000 ₽ × 0.7 × 12 = 504 000 000 ₽/год"
                   />
                   <FormulaBlock
                     step="03"
-                    title="Рост выручки за счёт повышения пропускной способности"
+                    title="Рост выручки — ускорение цикла исполнения заказов"
                     formula="Э_рост = В_тек × ΔП / 100"
-                    desc="В_тек — текущая годовая выручка (₽)  ·  ΔП — прирост производительности (%)"
-                    example="Расчёт: 19 245 млн ₽ × 25% = 4 811 250 000 ₽/год"
+                    desc="При отсутствии ERP цикл обработки заказа замедлен из-за ручных согласований в 1С. Интеграция даёт +15–20% пропускной способности"
+                    example="Расчёт: 19 245 млн ₽ × 15% = 2 886 750 000 ₽/год"
                   />
 
                   <div style={{ background: "linear-gradient(135deg, #1a1a2e, #16213e)", borderRadius: 14, padding: 24, color: "#fff" }}>
@@ -370,14 +374,14 @@ export default function Index() {
                     </div>
                     <div style={{ fontSize: 13, color: "#aaa", lineHeight: 1.6 }}>
                       Суммарный эффект = Э_фот + Э_ош + Э_рост<br />
-                      Затраты = бюджет проекта (единовременные + операционные)
+                      Затраты = лицензии ERP + интеграция с 1С + внедрение + обучение
                     </div>
                   </div>
                 </div>
               </div>
 
               <div style={{ background: "#fff", borderRadius: 16, padding: 28, marginBottom: 20, boxShadow: "0 1px 4px rgba(0,0,0,0.06)", borderTop: "4px solid #8bc34a" }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#8bc34a", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 18 }}>Пример расчёта (модельные данные)</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#8bc34a", textTransform: "uppercase", letterSpacing: "0.8px", marginBottom: 18 }}>Расчёт эффекта — переход от 1С к ERP (первые 3 года)</div>
                 <table style={{ width: "100%", borderCollapse: "collapse" }}>
                   <thead>
                     <tr style={{ background: "#f8f9fa" }}>
@@ -389,12 +393,12 @@ export default function Index() {
                   </thead>
                   <tbody>
                     {[
-                      { name: "Экономия ФОТ (20% потерь × 976 чел.)", y1: "207 900 000", y2: "415 800 000", y3: "415 800 000" },
-                      { name: "Снижение затрат на ошибки и доработки", y1: "360 000 000", y2: "720 000 000", y3: "720 000 000" },
-                      { name: "Рост выручки (+25% произв-ти)", y1: "2 405 625 000", y2: "4 811 250 000", y3: "4 811 250 000" },
-                      { name: "Суммарный эффект", y1: "2 973 525 000", y2: "5 947 050 000", y3: "5 947 050 000", bold: true },
-                      { name: "Затраты на проект", y1: "50 000 000", y2: "15 000 000", y3: "15 000 000" },
-                      { name: "Чистый эффект", y1: "2 923 525 000", y2: "5 932 050 000", y3: "5 932 050 000", green: true },
+                      { name: "Экономия ФОТ (30 ч дублир. × 976 чел.)", y1: "311 832 000", y2: "623 664 000", y3: "623 664 000" },
+                      { name: "Снижение потерь от ошибок ручного учёта", y1: "252 000 000", y2: "504 000 000", y3: "504 000 000" },
+                      { name: "Рост выручки (+15% произв-ти)", y1: "1 443 375 000", y2: "2 886 750 000", y3: "2 886 750 000" },
+                      { name: "Суммарный эффект", y1: "2 007 207 000", y2: "4 014 414 000", y3: "4 014 414 000", bold: true },
+                      { name: "Затраты (ERP + интеграция 1С + обучение)", y1: "80 000 000", y2: "20 000 000", y3: "20 000 000" },
+                      { name: "Чистый эффект", y1: "1 927 207 000", y2: "3 994 414 000", y3: "3 994 414 000", green: true },
                     ].map((row, i) => (
                       <tr key={row.name} style={{ borderTop: "1px solid #f5f5f5", background: row.green ? "#f8fdf3" : "transparent" }}>
                         <td style={{ padding: "13px 16px", fontSize: 13, fontWeight: row.bold || row.green ? 700 : 500, color: row.green ? "#5a9e1e" : "#333" }}>{row.name}</td>
@@ -411,9 +415,9 @@ export default function Index() {
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
                 {[
-                  { label: "ROI (1-й год)", value: "5 947%", sub: "чистый эффект / затраты на проект", icon: "Percent" },
-                  { label: "Срок окупаемости", value: "< 1 мес.", sub: "после завершения внедрения", icon: "Clock" },
-                  { label: "Чистый эффект (3 года)", value: "14,8 млрд ₽", sub: "при выручке 19 245 млн ₽/год", icon: "Banknote" },
+                  { label: "ROI (1-й год)", value: "2 409%", sub: "без ERP → с ERP, переход от 1С", icon: "Percent" },
+                  { label: "Срок окупаемости", value: "~2 мес.", sub: "после завершения внедрения ERP", icon: "Clock" },
+                  { label: "Чистый эффект (3 года)", value: "9,9 млрд ₽", sub: "при выручке 19 245 млн ₽/год", icon: "Banknote" },
                 ].map((kpi) => (
                   <div key={kpi.label} style={{ background: "linear-gradient(135deg, #8bc34a, #5a9e1e)", borderRadius: 16, padding: 24, textAlign: "center" }}>
                     <Icon name={kpi.icon} size={24} style={{ color: "rgba(255,255,255,0.85)", marginBottom: 8 }} />
