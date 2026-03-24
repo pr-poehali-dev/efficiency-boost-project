@@ -30,12 +30,13 @@ const resources = [
 ];
 
 const budget = [
-  { item: "Консалтинг и проектирование", cost: "300 000 – 500 000 ₽" },
-  { item: "Лицензии на ПО (год)", cost: "150 000 – 400 000 ₽" },
-  { item: "Обучение персонала", cost: "80 000 – 150 000 ₽" },
-  { item: "Внедрение и настройка", cost: "200 000 – 350 000 ₽" },
-  { item: "Непредвиденные расходы (10%)", cost: "73 000 – 140 000 ₽" },
-  { item: "ИТОГО", cost: "800 000 – 1 540 000 ₽", total: true },
+  { item: "Лицензии ERP (1 100 пользователей, год 1)", cost: "30 000 000 – 40 000 000 ₽" },
+  { item: "Интеграция с 1С:Предприятие", cost: "15 000 000 – 20 000 000 ₽" },
+  { item: "Консалтинг и проектирование", cost: "10 000 000 – 15 000 000 ₽" },
+  { item: "Внедрение, настройка, тестирование", cost: "8 000 000 – 12 000 000 ₽" },
+  { item: "Обучение персонала (1 100 чел.)", cost: "5 000 000 – 8 000 000 ₽" },
+  { item: "Непредвиденные расходы (10%)", cost: "6 800 000 – 9 500 000 ₽" },
+  { item: "ИТОГО (год 1)", cost: "74 800 000 – 104 500 000 ₽", total: true },
 ];
 
 const risks = [
@@ -154,8 +155,8 @@ export default function Index() {
               <div style={{ background: "linear-gradient(135deg, #1a1a2e, #16213e)", borderRadius: 16, padding: 32, marginBottom: 20, color: "#fff" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: "#8bc34a", textTransform: "uppercase", marginBottom: 12 }}>Проблема</div>
                 <div style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.4, marginBottom: 16 }}>
-                  При ФОТ 1 729 млн ₽ и численности <span style={{ color: "#8bc34a" }}>976 чел.</span> предприятие теряет<br />
-                  до <span style={{ color: "#8bc34a" }}>346–519 млн ₽/год</span> из-за неоптимальных операционных процессов
+                  При ФОТ 1 700 млн ₽ и численности <span style={{ color: "#8bc34a" }}>1 100 чел.</span> предприятие теряет<br />
+                  до <span style={{ color: "#8bc34a" }}>340–510 млн ₽/год</span> из-за неоптимальных операционных процессов
                 </div>
                 <div style={{ fontSize: 14, color: "#aaa", lineHeight: 1.6 }}>
                   При выручке 19 245 млн ₽ каждый процент потерь производительности — это ~192 млн ₽ недополученного результата.
@@ -184,7 +185,7 @@ export default function Index() {
                   {[
                     { label: "Рост производительности", value: "+25–35%", icon: "TrendingUp" },
                     { label: "Снижение ошибок в учёте", value: "–60%", icon: "CheckCircle" },
-                    { label: "Потенциал экономии ФОТ", value: "346–519 млн ₽", icon: "Banknote" },
+                    { label: "Потенциал экономии ФОТ", value: "340–510 млн ₽", icon: "Banknote" },
                   ].map((kpi) => (
                     <div key={kpi.label} style={{ background: "#f8fdf3", borderRadius: 12, padding: 18, textAlign: "center", border: "1px solid #d4edba" }}>
                       <Icon name={kpi.icon} size={22} style={{ color: "#5a9e1e", marginBottom: 8 }} />
@@ -397,8 +398,8 @@ export default function Index() {
                       { name: "Снижение потерь от ошибок ручного учёта", y1: "252 000 000", y2: "504 000 000", y3: "504 000 000" },
                       { name: "Рост выручки (+15% произв-ти)", y1: "1 443 375 000", y2: "2 886 750 000", y3: "2 886 750 000" },
                       { name: "Суммарный эффект", y1: "1 847 565 000", y2: "3 695 130 000", y3: "3 695 130 000", bold: true },
-                      { name: "Затраты (ERP + интеграция 1С + обучение)", y1: "80 000 000", y2: "20 000 000", y3: "20 000 000" },
-                      { name: "Чистый эффект", y1: "1 767 565 000", y2: "3 675 130 000", y3: "3 675 130 000", green: true },
+                      { name: "Затраты (ERP + интеграция 1С + обучение)", y1: "90 000 000", y2: "25 000 000", y3: "25 000 000" },
+                      { name: "Чистый эффект", y1: "1 757 565 000", y2: "3 670 130 000", y3: "3 670 130 000", green: true },
                     ].map((row, i) => (
                       <tr key={row.name} style={{ borderTop: "1px solid #f5f5f5", background: row.green ? "#f8fdf3" : "transparent" }}>
                         <td style={{ padding: "13px 16px", fontSize: 13, fontWeight: row.bold || row.green ? 700 : 500, color: row.green ? "#5a9e1e" : "#333" }}>{row.name}</td>
@@ -415,8 +416,8 @@ export default function Index() {
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
                 {[
-                  { label: "ROI (1-й год)", value: "2 209%", sub: "без ERP → с ERP, переход от 1С", icon: "Percent" },
-                  { label: "Срок окупаемости", value: "~2 мес.", sub: "после завершения внедрения ERP", icon: "Clock" },
+                  { label: "ROI (1-й год)", value: "1 953%", sub: "без ERP → с ERP, переход от 1С", icon: "Percent" },
+                  { label: "Срок окупаемости", value: "~3 мес.", sub: "после завершения внедрения ERP", icon: "Clock" },
                   { label: "Чистый эффект (3 года)", value: "9,1 млрд ₽", sub: "при ФОТ 1 700 млн ₽/год (1 100 чел.)", icon: "Banknote" },
                 ].map((kpi) => (
                   <div key={kpi.label} style={{ background: "linear-gradient(135deg, #8bc34a, #5a9e1e)", borderRadius: 16, padding: 24, textAlign: "center" }}>
