@@ -350,7 +350,7 @@ export default function Index() {
                     title="Экономия ФОТ — устранение ручного дублирования данных из 1С"
                     formula="Э_фот = (Т_дубл × Ч_сотр × С_час) × 12"
                     desc="Т_дубл — время на ручной перенос, сверку и согласование документов в 1С в месяц (ч)  ·  Ч_сотр — число вовлечённых сотрудников  ·  С_час — стоимость часа (₽)"
-                    example="Расчёт: 30 ч × 976 чел. × 1 775 ₽ × 12 мес. ≈ 623 664 000 ₽/год"
+                    example="Расчёт: 30 ч × 976 чел. × 862 ₽ × 12 мес. ≈ 302 968 320 ₽/год"
                   />
                   <FormulaBlock
                     step="02"
@@ -393,12 +393,12 @@ export default function Index() {
                   </thead>
                   <tbody>
                     {[
-                      { name: "Экономия ФОТ (30 ч дублир. × 976 чел.)", y1: "311 832 000", y2: "623 664 000", y3: "623 664 000" },
+                      { name: "Экономия ФОТ (30 ч дублир. × 976 чел. × 862 ₽)", y1: "151 484 160", y2: "302 968 320", y3: "302 968 320" },
                       { name: "Снижение потерь от ошибок ручного учёта", y1: "252 000 000", y2: "504 000 000", y3: "504 000 000" },
                       { name: "Рост выручки (+15% произв-ти)", y1: "1 443 375 000", y2: "2 886 750 000", y3: "2 886 750 000" },
-                      { name: "Суммарный эффект", y1: "2 007 207 000", y2: "4 014 414 000", y3: "4 014 414 000", bold: true },
+                      { name: "Суммарный эффект", y1: "1 846 859 160", y2: "3 693 718 320", y3: "3 693 718 320", bold: true },
                       { name: "Затраты (ERP + интеграция 1С + обучение)", y1: "80 000 000", y2: "20 000 000", y3: "20 000 000" },
-                      { name: "Чистый эффект", y1: "1 927 207 000", y2: "3 994 414 000", y3: "3 994 414 000", green: true },
+                      { name: "Чистый эффект", y1: "1 766 859 160", y2: "3 673 718 320", y3: "3 673 718 320", green: true },
                     ].map((row, i) => (
                       <tr key={row.name} style={{ borderTop: "1px solid #f5f5f5", background: row.green ? "#f8fdf3" : "transparent" }}>
                         <td style={{ padding: "13px 16px", fontSize: 13, fontWeight: row.bold || row.green ? 700 : 500, color: row.green ? "#5a9e1e" : "#333" }}>{row.name}</td>
@@ -415,9 +415,9 @@ export default function Index() {
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
                 {[
-                  { label: "ROI (1-й год)", value: "2 409%", sub: "без ERP → с ERP, переход от 1С", icon: "Percent" },
+                  { label: "ROI (1-й год)", value: "2 209%", sub: "без ERP → с ERP, переход от 1С", icon: "Percent" },
                   { label: "Срок окупаемости", value: "~2 мес.", sub: "после завершения внедрения ERP", icon: "Clock" },
-                  { label: "Чистый эффект (3 года)", value: "9,9 млрд ₽", sub: "при выручке 19 245 млн ₽/год", icon: "Banknote" },
+                  { label: "Чистый эффект (3 года)", value: "9,1 млрд ₽", sub: "при ФОТ 1 700 млн ₽/год (976 чел.)", icon: "Banknote" },
                 ].map((kpi) => (
                   <div key={kpi.label} style={{ background: "linear-gradient(135deg, #8bc34a, #5a9e1e)", borderRadius: 16, padding: 24, textAlign: "center" }}>
                     <Icon name={kpi.icon} size={24} style={{ color: "rgba(255,255,255,0.85)", marginBottom: 8 }} />
