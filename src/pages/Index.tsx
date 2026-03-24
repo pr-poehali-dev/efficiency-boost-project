@@ -154,10 +154,11 @@ export default function Index() {
               <div style={{ background: "linear-gradient(135deg, #1a1a2e, #16213e)", borderRadius: 16, padding: 32, marginBottom: 20, color: "#fff" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "1.5px", color: "#8bc34a", textTransform: "uppercase", marginBottom: 12 }}>Проблема</div>
                 <div style={{ fontSize: 22, fontWeight: 700, lineHeight: 1.4, marginBottom: 16 }}>
-                  Предприятие теряет до <span style={{ color: "#8bc34a" }}>20–30%</span> рабочего времени<br />
-                  из-за неоптимизированных операционных процессов
+                  При ФОТ 1 729 млн ₽ и численности <span style={{ color: "#8bc34a" }}>976 чел.</span> предприятие теряет<br />
+                  до <span style={{ color: "#8bc34a" }}>346–519 млн ₽/год</span> из-за неоптимальных операционных процессов
                 </div>
                 <div style={{ fontSize: 14, color: "#aaa", lineHeight: 1.6 }}>
+                  При выручке 19 245 млн ₽ каждый процент потерь производительности — это ~192 млн ₽ недополученного результата.
                   Устаревшие регламенты, ручной документооборот и разрозненность подразделений
                   приводят к систематическим задержкам, ошибкам и росту операционных затрат.
                 </div>
@@ -182,8 +183,8 @@ export default function Index() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
                   {[
                     { label: "Рост производительности", value: "+25–35%", icon: "TrendingUp" },
-                    { label: "Снижение ошибок", value: "–60%", icon: "CheckCircle" },
-                    { label: "Экономия времени", value: "20+ ч/мес", icon: "Clock" },
+                    { label: "Снижение ошибок в учёте", value: "–60%", icon: "CheckCircle" },
+                    { label: "Потенциал экономии ФОТ", value: "346–519 млн ₽", icon: "Banknote" },
                   ].map((kpi) => (
                     <div key={kpi.label} style={{ background: "#f8fdf3", borderRadius: 12, padding: 18, textAlign: "center", border: "1px solid #d4edba" }}>
                       <Icon name={kpi.icon} size={22} style={{ color: "#5a9e1e", marginBottom: 8 }} />
@@ -345,21 +346,21 @@ export default function Index() {
                     title="Экономия на ФОТ (высвобождение рабочего времени)"
                     formula="Э_фот = (Т_потери × Ч_сотр × С_час) × 12"
                     desc="Т_потери — среднее время потерь на 1 сотрудника в месяц (ч)  ·  Ч_сотр — кол-во сотрудников  ·  С_час — средняя стоимость часа работы (₽)"
-                    example="Пример: 20 ч × 50 чел. × 500 ₽ × 12 мес. = 6 000 000 ₽/год"
+                    example="Расчёт: 20 ч × 976 чел. × 1 775 ₽ × 12 мес. ≈ 415 800 000 ₽/год"
                   />
                   <FormulaBlock
                     step="02"
                     title="Снижение затрат на исправление ошибок (брак, доработки)"
                     formula="Э_ош = (N_ош × С_ош) × К_снижения"
-                    desc="N_ош — кол-во ошибок в месяц  ·  С_ош — средняя стоимость устранения одной ошибки (₽)  ·  К_снижения — коэффициент снижения ошибок (напр. 0.6 = –60%)"
-                    example="Пример: 30 ош. × 3 000 ₽ × 0.6 × 12 = 648 000 ₽/год"
+                    desc="N_ош — кол-во ошибок в месяц  ·  С_ош — средняя стоимость устранения одной ошибки (₽)  ·  К_снижения — коэффициент снижения ошибок (0.6 = –60%)"
+                    example="Расчёт: 200 ош. × 50 000 ₽ × 0.6 × 12 = 720 000 000 ₽/год"
                   />
                   <FormulaBlock
                     step="03"
                     title="Рост выручки за счёт повышения пропускной способности"
                     formula="Э_рост = В_тек × ΔП / 100"
                     desc="В_тек — текущая годовая выручка (₽)  ·  ΔП — прирост производительности (%)"
-                    example="Пример: 50 000 000 ₽ × 25% = 12 500 000 ₽/год"
+                    example="Расчёт: 19 245 млн ₽ × 25% = 4 811 250 000 ₽/год"
                   />
 
                   <div style={{ background: "linear-gradient(135deg, #1a1a2e, #16213e)", borderRadius: 14, padding: 24, color: "#fff" }}>
@@ -388,12 +389,12 @@ export default function Index() {
                   </thead>
                   <tbody>
                     {[
-                      { name: "Экономия ФОТ", y1: "3 000 000", y2: "6 000 000", y3: "6 000 000" },
-                      { name: "Снижение затрат на ошибки", y1: "324 000", y2: "648 000", y3: "648 000" },
-                      { name: "Рост выручки", y1: "6 250 000", y2: "12 500 000", y3: "12 500 000" },
-                      { name: "Суммарный эффект", y1: "9 574 000", y2: "19 148 000", y3: "19 148 000", bold: true },
-                      { name: "Затраты на проект", y1: "1 540 000", y2: "400 000", y3: "400 000" },
-                      { name: "Чистый эффект", y1: "8 034 000", y2: "18 748 000", y3: "18 748 000", green: true },
+                      { name: "Экономия ФОТ (20% потерь × 976 чел.)", y1: "207 900 000", y2: "415 800 000", y3: "415 800 000" },
+                      { name: "Снижение затрат на ошибки и доработки", y1: "360 000 000", y2: "720 000 000", y3: "720 000 000" },
+                      { name: "Рост выручки (+25% произв-ти)", y1: "2 405 625 000", y2: "4 811 250 000", y3: "4 811 250 000" },
+                      { name: "Суммарный эффект", y1: "2 973 525 000", y2: "5 947 050 000", y3: "5 947 050 000", bold: true },
+                      { name: "Затраты на проект", y1: "50 000 000", y2: "15 000 000", y3: "15 000 000" },
+                      { name: "Чистый эффект", y1: "2 923 525 000", y2: "5 932 050 000", y3: "5 932 050 000", green: true },
                     ].map((row, i) => (
                       <tr key={row.name} style={{ borderTop: "1px solid #f5f5f5", background: row.green ? "#f8fdf3" : "transparent" }}>
                         <td style={{ padding: "13px 16px", fontSize: 13, fontWeight: row.bold || row.green ? 700 : 500, color: row.green ? "#5a9e1e" : "#333" }}>{row.name}</td>
@@ -410,9 +411,9 @@ export default function Index() {
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
                 {[
-                  { label: "ROI (1-й год)", value: "522%", sub: "от вложений в проект", icon: "Percent" },
-                  { label: "Срок окупаемости", value: "~2 мес.", sub: "после завершения внедрения", icon: "Clock" },
-                  { label: "Совокупный эффект (3 года)", value: "45,5 млн ₽", sub: "при бюджете 1,54 млн ₽", icon: "Banknote" },
+                  { label: "ROI (1-й год)", value: "5 947%", sub: "чистый эффект / затраты на проект", icon: "Percent" },
+                  { label: "Срок окупаемости", value: "< 1 мес.", sub: "после завершения внедрения", icon: "Clock" },
+                  { label: "Чистый эффект (3 года)", value: "14,8 млрд ₽", sub: "при выручке 19 245 млн ₽/год", icon: "Banknote" },
                 ].map((kpi) => (
                   <div key={kpi.label} style={{ background: "linear-gradient(135deg, #8bc34a, #5a9e1e)", borderRadius: 16, padding: 24, textAlign: "center" }}>
                     <Icon name={kpi.icon} size={24} style={{ color: "rgba(255,255,255,0.85)", marginBottom: 8 }} />
